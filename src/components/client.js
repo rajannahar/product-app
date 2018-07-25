@@ -192,7 +192,7 @@ class Client extends Component {
   render() {
 
    // if (this.state.hotels.length) {
-        console.log("load: ", this.state.products);
+        console.log("load: ", this.state);
 
         /* const {hotels} = this.state;
 
