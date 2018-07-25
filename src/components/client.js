@@ -16,6 +16,7 @@ class Client extends Component {
     // }
 
     state = {
+        categories: [],
         products: [], 
     }
 
@@ -45,9 +46,25 @@ class Client extends Component {
         //     initialState = {...this.state};
         // }));
 
-        const apiUrl = "https://cors.io/?https://api.gousto.co.uk/products/v2.0/categories";
+        const corsHandler = "https://cors.io/?";
 
-        fetch(apiUrl)
+        const categoriesUrl = `${corsHandler}https://api.gousto.co.uk/products/v2.0/categories`;
+        const productsUrl = `${corsHandler}https://api.gousto.co.uk/products/v2.0/products?includes[]=categories&includes[]=attributes&sort=position&image_sizes[]=365&image_sizes[]=400&period_id=120`;
+
+        fetch(categoriesUrl)
+        .then(res => res.json()
+            .then(data => {
+                console.log(data);
+                data.status = "ok"
+                    ? this.setState({
+                        ...this.state,
+                        categories: data.data
+                    })
+                    : [];
+            })
+        )
+
+        fetch(productsUrl)
         .then(res => res.json()
             .then(data => {
                 console.log(data);
@@ -57,7 +74,6 @@ class Client extends Component {
                         products: data.data
                     })
                     : [];
-                
             })
         )
 
@@ -176,7 +192,7 @@ class Client extends Component {
   render() {
 
    // if (this.state.hotels.length) {
-        console.log("load: ", this.state);
+        console.log("load: ", this.state.products);
 
         /* const {hotels} = this.state;
 

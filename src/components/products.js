@@ -13,15 +13,26 @@ const Products = props => (
     //     <option key="5" value="5">5 Stars</option>
     // </Input>
 
-    <Collection>
+    // <Collection>
+    //     {
+    //         props.products.length > 0
+    //             ? props.products.map(product => 
+    //                 <CollectionItem key={product.id}>{product.title}</CollectionItem>
+    //             )
+    //             : <h1>Loading</h1>
+    //     }
+    // </Collection>
+
+    <div>
         {
+            // console.log("Products: ",props.products)
             props.products.length > 0
                 ? props.products.map(product => 
                     <CollectionItem key={product.id}>{product.title}</CollectionItem>
                 )
                 : <h1>Loading</h1>
         }
-    </Collection>
+    </div>
 
 );
 
