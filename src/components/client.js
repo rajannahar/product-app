@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Products from './products';
+import CategoriesFilter from './categoriesFilter';
+import {Row, Col, Preloader} from 'react-materialize';
 
 
 class Client extends Component {
@@ -227,65 +229,17 @@ class Client extends Component {
             
             <div className="client">
 
-                <Products products={this.state.products} />
-                
-                {/* {this.state.hotels.length 
-                    ? <div className="container">
-
-                            <Row>
-                                <SortBy handleSort={this.handleSort} />
-                            </Row>
-
-                            <Row>
-                                <FilterName handleFilterName={this.handleFilterName} />
-                            </Row>
-
-                            <Row>
-                                <FilterStars handleFilterStars={this.handleFilterStars}/>
-                                <FilterUserRatings />
-                                <FilterMinCost />
-                            </Row>
-
-                            <Row>
-                                <ResetButton resetData={this.resetData} />
-                            </Row>
-
-                            <Row>
-                                    
-                                { hotelsToRender.map(hotel =>
-                                
-                                    <Col m={6} s={12} key={hotel.EstablishmentId}>
-                                        <Card>
-                                            <div className="card-image">
-                                                <img src={hotel.ImageUrl} alt="" />
-                                                <span className="card-title">{hotel.Name}</span>
-                                            </div>
-                                            <div className="card-content">
-                                                <p><b>Type: </b>{hotel.EstablishmentType}</p>
-                                                <p><b>Location: </b>{hotel.Location}</p>
-                                                <p><b>Minimum cost: </b>£{hotel.MinCost}</p>
-                                                <p><b>Stars: </b>{hotel.Stars}</p>
-                                                <p><b>User rating: </b>{hotel.UserRating}</p>
-                                                <p><b>User rating title: </b>{hotel.UserRatingTitle}</p>
-                                                <p><b>User rating count: </b>{hotel.UserRatingCount}</p>
-                                                <p><b>Distance: </b>{parseFloat(hotel.Distance).toFixed(2)}</p>
-                                            </div>
-                                        </Card>
-                                    </Col>
-                                    
-                                )}
-
-                            </Row>
-                        </div>
-
-                    :  <div className="container">
-                            <Row>
-                                <Col s={12}>
-                                    <Preloader flashing size='big'/>
-                                </Col>
-                            </Row> 
-                        </div>
-                    } */}
+                {this.state.categories.length > 0 && this.state.products.length > 0 
+                    ? <div className="client">
+                        <CategoriesFilter categories={this.state.categories} />
+                        <Products products={this.state.products} />
+                    </div>
+                    : <Row>
+                        <Col s={12}>
+                            <Preloader flashing size='big'/>
+                        </Col>
+                    </Row>
+                }   
 
             </div>
 
