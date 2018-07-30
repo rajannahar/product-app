@@ -1,25 +1,16 @@
 import React, { Component } from 'react';
 import Products from './products';
 import CategoriesFilter from './categoriesFilter';
+import InputFilter from './inputFilter';
 import {Row, Col, Preloader} from 'react-materialize';
 
 
 class Client extends Component {
-
-    /* constructor - deprecated with React 16 */
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         hotels: [], 
-    //         sortBy: '',
-    //         filterName: '',
-    //         filterStars: ''
-    //     }
-    // }
-
     state = {
         categories: [],
-        products: [], 
+        products: [],
+        filterInput: "",
+        selectedCategory: ""
     }
 
 
@@ -190,6 +181,24 @@ class Client extends Component {
         })
     }; */
 
+
+    handleFilterClick = event => {
+        let clickedCategoryValue = event.target.value;
+        this.setState({
+            selectedCategory: clickedCategoryValue
+        });
+        // this.addClass("test");
+    }
+
+
+    handleInput = event => {
+        let inputData = event.target.value;
+        this.setState({
+            filterInput: inputData
+        });
+                        
+    };
+
     
   render() {
 
@@ -231,8 +240,12 @@ class Client extends Component {
 
                 {this.state.categories.length > 0 && this.state.products.length > 0 
                     ? <div className="client">
-                        <CategoriesFilter categories={this.state.categories} />
-                        <Products products={this.state.products} />
+                        <Row>
+                            <CategoriesFilter categories={this.state.categories} handleFilterClick={this.handleFilterClick} />
+                        </Row>
+
+                        <InputFilter handleInput={this.handleInput} />
+                        <Products products={this.state.products} filterInput={this.state.filterInput} />
                     </div>
                     : <Row>
                         <Col s={12}>
