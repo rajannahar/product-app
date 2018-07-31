@@ -2,6 +2,7 @@ import React from 'react';
 import {Row, Col, Card} from 'react-materialize';
 
 const Products = props => (
+    
     <Row>
         {props.filterInput.length===0
             ? props.products.map(product => 
@@ -14,7 +15,7 @@ const Products = props => (
     
                             <span className="card-title"
                                 style={{"textShadow": "2px 2px 5px #353c42"}}>
-                                {product.title}
+                                {product.title} - {product.categories[0].title}
                             </span>
                         </div>
                     </Card>
@@ -32,14 +33,13 @@ const Products = props => (
 
                             <span className="card-title"
                                 style={{"textShadow": "2px 2px 5px #353c42"}}>
-                                {product.title}
+                                {product.title} - {product.categories[0].title}
                             </span>
                         </div>
                     </Card>
                 </Col>
             : []
-            )
-        }
+            )}
     </Row>
 
 );
