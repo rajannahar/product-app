@@ -1,11 +1,15 @@
 import React from 'react';
 import {Row, Col, Card} from 'react-materialize';
 
-const Products = props => (
+class Products extends React.Component {
     
-    <Row>
-        {props.filterInput.length===0
-            ? props.products.map(product => 
+    render() {
+        let filterInputRender
+        // let nofilterText;
+        // let filterText
+
+        filterInputRender = this.props.filterInput.length === 0
+            ? this.props.products.map(product => 
                 <Col l={4} m={6} s={12} key={product.id}>
                     <Card>
                         <div className="card-image">
@@ -22,8 +26,8 @@ const Products = props => (
                 </Col>
             )
 
-            : props.products.map(product => 
-                product.title.toLowerCase().includes(props.filterInput.toLowerCase()) || product.description.toLowerCase().includes(props.filterInput.toLowerCase())
+            : this.props.products.map(product => 
+                product.title.toLowerCase().includes(this.props.filterInput.toLowerCase()) || product.description.toLowerCase().includes(this.props.filterInput.toLowerCase())
                 ? <Col l={4} m={6} s={12} key={product.id}>
                     <Card>
                         <div className="card-image">
@@ -39,9 +43,35 @@ const Products = props => (
                     </Card>
                 </Col>
             : []
-            )}
-    </Row>
+            )
 
-);
+            let selectedCategoryCheck = this.props.selectedCategory.length === 0;
+            let categoryClickFilter;
+
+            selectedCategoryCheck
+                ? categoryClickFilter=filterInputRender
+                : categoryClickFilter=this.props.products.map(product => 
+                    product.categories[0].title===this.props.selectedCategory
+                    ? <Col l={4} m={6} s={12} key={product.id}>
+                        <Card>
+                            <div className="card-image">
+                                <img src={product.images[400].src} 
+                                    alt={product.description} 
+                                    style={{height: "200px"}} />
+
+                                <span className="card-title"
+                                    style={{"textShadow": "2px 2px 5px #353c42"}}>
+                                    {product.title} - {product.categories[0].title}
+                                </span>
+                            </div>
+                        </Card>
+                    </Col>
+                    : []
+                )       
+        return(
+            <Row>{categoryClickFilter}</Row>
+        );
+    }
+}
 
 export default Products;

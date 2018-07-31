@@ -56,6 +56,7 @@ class Client extends Component {
     
     handleFilterClick = event => {
         let clickedCategoryValue = event.target.value;
+        console.log(clickedCategoryValue);
         this.setState({
             selectedCategory: clickedCategoryValue
         });
