@@ -49,6 +49,7 @@ class Client extends Component {
         
     };
 
+    
     componentDidMount() {
         this.apidata();
     }
@@ -56,10 +57,15 @@ class Client extends Component {
     
     handleFilterClick = event => {
         let clickedCategoryValue = event.target.value;
-        console.log(clickedCategoryValue);
-        this.setState({
-            selectedCategory: clickedCategoryValue
-        });
+        let matchedCategoryValue = clickedCategoryValue===this.state.selectedCategory;
+
+        matchedCategoryValue
+            ? this.setState({
+                selectedCategory: ""
+            })
+            : this.setState({
+                selectedCategory: clickedCategoryValue
+            });
     }
 
 
