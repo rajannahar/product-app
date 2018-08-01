@@ -4,7 +4,6 @@ import CategoriesFilter from './categoriesFilter';
 import InputFilter from './inputFilter';
 import {Row, Col, Preloader} from 'react-materialize';
 
-
 class Client extends Component {
     state = {
         categories: [],
@@ -13,9 +12,7 @@ class Client extends Component {
         selectedCategory: ""
     }
 
-
     apidata = () => {
-
         const corsHandler = "https://cors.io/?";
         const categoriesUrl = `${corsHandler}https://api.gousto.co.uk/products/v2.0/categories`;
         const productsUrl = `${corsHandler}https://api.gousto.co.uk/products/v2.0/products?includes[]=categories&includes[]=attributes&sort=position&image_sizes[]=365&image_sizes[]=400&period_id=120`;
@@ -44,16 +41,12 @@ class Client extends Component {
                     })
                     : [];
             })
-        )
-
-        
+        )        
     };
 
-    
     componentDidMount() {
         this.apidata();
     }
-
     
     handleFilterClick = event => {
         let clickedCategoryValue = event.target.value;
@@ -68,13 +61,11 @@ class Client extends Component {
             });
     }
 
-
     handleInput = event => {
         let inputData = event.target.value;
         this.setState({
             filterInput: inputData
-        });
-                        
+        });                  
     };
 
     
