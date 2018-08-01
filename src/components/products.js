@@ -38,16 +38,22 @@ class Products extends React.Component {
         //         : []
         //     )
 
+        let productClick = event => {
+            event.preventDefault();
+            console.log("clicked ",event);
+        }
+
         selectedCategoryCheck
             ? cateogryAndTextFiltered=textMatchTitleDescription.map(product => 
-                <li>
+                <li key={product.id}
+                    onClick={productClick}>
                     <p>{product.title}</p>
                     <p style={{"display":"none"}}>{product.description}</p>
                 </li>
             )
             : cateogryAndTextFiltered=textMatchTitleDescription.map(product => 
                 product.categories[0].title===this.props.selectedCategory
-                ? <li>
+                ? <li onClick={productClick}>
                     <p>{product.title}</p>
                     <p style={{"display":"none"}}>{product.description}</p>
                 </li>
@@ -56,7 +62,10 @@ class Products extends React.Component {
 
 
         return(
-            <ul>{cateogryAndTextFiltered}</ul>
+            <ul className="products-list"
+            style={{"marginLeft":"20px"}}>
+                {cateogryAndTextFiltered}
+            </ul>
         );
     }
 }
