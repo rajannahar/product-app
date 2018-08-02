@@ -1,4 +1,5 @@
 import React from 'react';
+// import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 
 const settings = {
@@ -51,6 +52,24 @@ const CategoriesFilter = props => (
             : []
         )}
     </Slider>
+
+
+
+    // <Link>
+    //     {props.categories.map(category =>
+    //         category.hidden===false
+    //         ? <button 
+    //             key={category.id}
+    //             onClick={props.handleFilterClick}
+    //             value={category.title}
+    //             className={category.title===props.selectedCategory 
+    //                 ? "active category-button" 
+    //                 : "category-button"}>
+    //             {category.title}
+    //         </button>
+    //         : []
+    //     )}
+    // </Link>
 
 );
 
