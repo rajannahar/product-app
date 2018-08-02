@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ProductDescription = props => (
-    <span style={{"display":"block", "margin":"0 0 0 10px"}}>
+    <span style={{"display":"block", "margin":"0 10px"}}>
         {props.productDescription}
     </span>
 );
