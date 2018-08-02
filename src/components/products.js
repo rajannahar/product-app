@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ProductItem from './productItem';
 
-class Products extends React.Component {
+class Products extends Component {
     
     componentDidMount() {
         this.setState({ showDescription: false })
@@ -9,14 +9,14 @@ class Products extends React.Component {
 
     render() {
 
-        let selectedCategoryCheck = this.props.selectedCategory.length === 0;
+        let selectedCategoryCheck = this.props.selectedCategory.length === 0;  
         let textMatchTitleDescription = this.props.products
             .filter(filteredProduct => 
                 filteredProduct.title.toLowerCase().includes(this.props.filterInput.toLowerCase()) 
                 || 
                 filteredProduct.description.toLowerCase().includes(this.props.filterInput.toLowerCase())
             );
-        
+
         let cateogryAndTextFiltered;
         selectedCategoryCheck
             ? cateogryAndTextFiltered=textMatchTitleDescription.map(product => 

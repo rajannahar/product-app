@@ -1,13 +1,15 @@
 import React from 'react';
-import {Row, Input} from 'react-materialize';
+import {Row, Col, Input} from 'react-materialize';
 
 const InputFilter = props => (
-    <Row>    
-        <Input className="filterName" 
-            placeholder="Filter by name" 
-            s={12} 
-            m={8} 
-            onKeyUp={props.handleInput} />
+    <Row>
+        <Col s={12} m={6}>  
+            <Input className="filterName" 
+                placeholder="Filter by name" 
+                s={12} 
+                m={8} 
+                onKeyUp={props.handleInput} />
+        </Col>
     </Row>
 
 );

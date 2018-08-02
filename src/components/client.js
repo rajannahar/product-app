@@ -20,7 +20,7 @@ class Client extends Component {
         fetch(categoriesUrl)
         .then(res => res.json()
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 data.status = "ok"
                     ? this.setState({
                         ...this.state,
@@ -33,7 +33,7 @@ class Client extends Component {
         fetch(productsUrl)
         .then(res => res.json()
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 data.status = "ok"
                     ? this.setState({
                         ...this.state,
@@ -49,9 +49,9 @@ class Client extends Component {
     }
     
     handleFilterClick = event => {
-        let clickedCategoryValue = event.target.value;
-        let matchedCategoryValue = clickedCategoryValue===this.state.selectedCategory;
 
+        let clickedCategoryValue = event;
+        let matchedCategoryValue = clickedCategoryValue===this.state.selectedCategory;
         matchedCategoryValue
             ? this.setState({
                 selectedCategory: ""
@@ -59,6 +59,9 @@ class Client extends Component {
             : this.setState({
                 selectedCategory: clickedCategoryValue
             });
+
+        this.props.history.push(`/product/${clickedCategoryValue}`);
+
     }
 
     handleInput = event => {
@@ -67,11 +70,10 @@ class Client extends Component {
             filterInput: inputData
         });                  
     };
-
     
   render() {
 
-        console.log("load: ", this.state);
+        // console.log("load: ", this.state);
         return (
             <div className="client">
                 {this.state.categories.length > 0 && this.state.products.length > 0 

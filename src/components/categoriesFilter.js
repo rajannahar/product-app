@@ -1,6 +1,6 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import Slider from "react-slick";
+import { Link } from 'react-router-dom';
 
 const settings = {
     dots: false,
@@ -40,36 +40,19 @@ const CategoriesFilter = props => (
     <Slider {...settings}>
         {props.categories.map(category =>
             category.hidden===false
-            ? <button 
+            ? <Link 
+                to={`/product/` + category.title}
                 key={category.id}
-                onClick={props.handleFilterClick}
+                onClick={()=> props.handleFilterClick(category.title)}
                 value={category.title}
                 className={category.title===props.selectedCategory 
                     ? "active category-button" 
                     : "category-button"}>
                 {category.title}
-            </button>
+            </Link>
             : []
         )}
     </Slider>
-
-
-
-    // <Link>
-    //     {props.categories.map(category =>
-    //         category.hidden===false
-    //         ? <button 
-    //             key={category.id}
-    //             onClick={props.handleFilterClick}
-    //             value={category.title}
-    //             className={category.title===props.selectedCategory 
-    //                 ? "active category-button" 
-    //                 : "category-button"}>
-    //             {category.title}
-    //         </button>
-    //         : []
-    //     )}
-    // </Link>
 
 );
 

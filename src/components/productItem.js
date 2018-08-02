@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component }from 'react';
 import ProductDescription from './productDescription';
 
-class ProductItem extends React.Component {
+class ProductItem extends Component {
 
     componentWillMount() {
         this.setState({ showDescription: false })
@@ -20,13 +20,13 @@ class ProductItem extends React.Component {
         const buttonStyles = {
             "display":"block", 
             "margin":"10px 0 0 10px",
-            "text-decoration":"underline",
+            "textDecoration":"underline",
             "cursor":"pointer"
         }
 
         const buttonStylesActive = {
             ...buttonStyles,
-            "font-weight":"bold"
+            "fontWeight":"bold"
         }
 
         return (
