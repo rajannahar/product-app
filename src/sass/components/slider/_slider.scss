@@ -10,17 +10,21 @@
     .slick-next, 
     .slick-prev {
         &:before {
-            color: #26a69a;
+            color: #000;
         }
     }
 
-    .category-button {
+    .category-button,
+    .category-button:focus {
         width: 95% !important;
         letter-spacing: normal;
         font-size: 12px;
+        background-color: #fff;
+        color: #000;
         &.active {
             font-size: 13px;
-            background-color: #11897d;
+            background-color: #000;
+            color: #fff;
             text-decoration: underline;
         }
     }

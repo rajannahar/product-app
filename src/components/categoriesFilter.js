@@ -1,5 +1,4 @@
 import React from 'react';
-import {Button} from 'react-materialize';
 import Slider from "react-slick";
 
 const settings = {
@@ -37,38 +36,21 @@ const settings = {
 };
 
 const CategoriesFilter = props => (
-
-    // <Slider {...settings}>
-    //     {props.categories.map(category =>
-    //         category.hidden===false
-    //         ? <Button 
-    //             key={category.id}
-    //             onClick={props.handleFilterClick}
-    //             value={category.title}
-    //             className={category.title===props.selectedCategory 
-    //                 ? "active category-button" 
-    //                 : "category-button"}>
-    //             {category.title}
-    //         </Button>
-    //         : []
-    //     )}
-    // </Slider>
-
     <Slider {...settings}>
-    {props.categories.map(category =>
-        category.hidden===false
-        ? <button 
-            key={category.id}
-            onClick={props.handleFilterClick}
-            value={category.title}
-            className={category.title===props.selectedCategory 
-                ? "active category-button" 
-                : "category-button"}>
-            {category.title}
-        </button>
-        : []
-    )}
-</Slider>
+        {props.categories.map(category =>
+            category.hidden===false
+            ? <button 
+                key={category.id}
+                onClick={props.handleFilterClick}
+                value={category.title}
+                className={category.title===props.selectedCategory 
+                    ? "active category-button" 
+                    : "category-button"}>
+                {category.title}
+            </button>
+            : []
+        )}
+    </Slider>
 
 );
 
