@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-// import Client from './components/client';
-
 import Router from './components/router';
-
 import createBrowserHistory from 'history/createBrowserHistory'
 const customHistory = createBrowserHistory()
 
