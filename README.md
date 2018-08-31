@@ -1,4 +1,4 @@
-# Gousto React Application
+# React Application
 
 #### This is a React application bootstrapped using create-react-app. It presents you with data from the Goustp API to render products which can be filtered via cateogry buttons or free input text which will match either the product title or product description.
 
